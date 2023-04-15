@@ -10,29 +10,38 @@ namespace primer_parcial_unit_test_procesador_matematico
     {
         private int _resultado;
 
-        public void Sumar(int primerNumero, int segundoNumero)
+        public int Sumar(int primerNumero, int segundoNumero)
         {
             this._resultado = primerNumero + segundoNumero;
             if (this.EsNegativo())
             {
                 this._resultado = 0;
             }
+
+            return this._resultado;
         }
 
-        public void Dividir(int dividendo, int divisor)
+        public int Dividir(int dividendo, int divisor)
         {
+            if (divisor == 0)
+            {
+                throw new DivideByZeroException("No se acepta divisor igual a cero");
+            }
+
             this._resultado = dividendo / divisor;
             if (this.EsNegativo())
             {
                 this._resultado = 0;
             }
+
+            return this._resultado;
         }
         private bool EsNegativo()
         {
             return (this._resultado < 0);
         }
 
-        public void CalcularMayor(int primerNumero, int segundoNumero)
+        public int CalcularMayor(int primerNumero, int segundoNumero)
         {
             if (primerNumero > segundoNumero)
             {
@@ -46,6 +55,8 @@ namespace primer_parcial_unit_test_procesador_matematico
             {
                 this._resultado = segundoNumero;
             }
+
+            return this._resultado;
         }
     }
 }
